@@ -1,0 +1,50 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" controllerName="ka.controller.Detail">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}" busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+		<semantic:content>
+			<ObjectHeader id="objectHeader" title="{EvKa}" number="{IvTKadesc}"/>
+		<!--	<IconTabBar selectedKey="__filter1" id="__bar0">
+			    <items>
+			        <IconTabFilter text="Details" count="" icon="sap-icon://approvals" iconColor="Default" id="__filter2">
+			            <content>-->
+            				<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" editable="false" layout="ResponsiveGridLayout" id="__form1">
+				                <sap.ui.layout.form:content xmlns:sap.ui.layout.form="sap.ui.layout.form">
+				                    <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" text="General Data" id="__title1"/>
+				                    
+				                    <Label text="Status" id="__label4" textAlign="Begin"/>
+				                    <Input width="100%" value="{path:'IvStatus', formatter: '.formatter.formatStatus'}" id="__input5" editable="false"/>
+				                    
+				                    <Label text="Keywords" width="100%" id="__label1"/>
+				                    <Input width="100%" value="{IvTKeyword}" id="__input4" editable="false"/>
+				                    
+				                    <Label text="Priority" width="100%" id="__label5"/>
+				                    <Input width="100%" value="{path:'IvImp', formatter: '.formatter.formatPriority'}"  id="__input2" editable="false"/>
+				                    
+				                    <Label text="Authorization Scope" width="100%" id="__label8"/>
+				                    <Input width="100%" value="{path:'IvAuthscope', formatter: '.formatter.formatAuth'}"  id="__input1" editable="false"/>
+				                    
+				                    <Label text="Transaction Type" width="100%" id="__label9"/>
+				                    <Input width="100%" value="{path:'LvKatype', formatter: '.formatter.formatTrans'}" id="__input0" editable="false"/>
+				                    
+				                    <Label text="Problem Description" width="100%" id="__label6"/>
+				                    <TextArea width="100%" value="{IvTProb}" id="__input6" editable="false"/>
+				                    
+				                    <Label text="Solution Description:" width="100%" id="__label7"/>
+				                    <TextArea width="100%" value="{IvTSol}" id="__input7" editable="false"/>
+				                    
+				                    </sap.ui.layout.form:content>
+				            </sap.ui.layout.form:SimpleForm>
+			           <!-- </content>
+			        </IconTabFilter>
+			       	
+				</items>
+			</IconTabBar>-->
+		</semantic:content>
+		<semantic:editAction>
+			<semantic:EditAction id="edit" press="onEdit"/>
+		</semantic:editAction>
+		<semantic:customFooterContent>
+			<Button enabled="true" id="deleteButton" press="onDelete" text="Delete"/>
+		</semantic:customFooterContent>
+		
+	</semantic:DetailPage>
+</mvc:View>

@@ -1,0 +1,99 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:footerbar="sap.ushell.ui.footerbar" 
+xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:smart="sap.ui.comp.smartfield" 
+xmlns="sap.m" controllerName="ka.controller.CreateEntity">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" title="{viewModel>/viewTitle}" busy="{viewModel>/busy}">
+		<semantic:content>
+			<f:SimpleForm class="editableForm" id="newEntitySimpleForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024" title="{= ${viewModel>/mode} === 'edit'? 'Edit': 'Create'}">
+				<f:content>
+					<Label text="ID"/>
+					<Input name="EvKa" id="EvKa_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" visible="true" editable="false" value="{ path: 'EvKa', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:10, nullable:false } }"/>
+					
+					<Label text="Transaction Type"/>
+					<ComboBox showSecondaryValues="true" value="{ path: 'LvKatype', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:4, nullable:false }, formatter: '.formatter.formatTrans'}" id="__select3">
+					    <items>
+					        <core:ListItem text="ZP4E" key="ZP4E" additionalText="Knowledge Article External"/>
+					        <core:ListItem text="ZP4I" key="ZP4I" additionalText="Knowledge Article Internal"/>
+					       	
+			           </items>
+					</ComboBox>
+					<!--<Input name="LvKatype" id="LvKatype_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" visible="true" value="{ path: 'LvKatype', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:4, nullable:false } }"/>-->
+					
+					<Label text="Auth. Scope"/>
+					<ComboBox showSecondaryValues="true" value="{ path: 'IvAuthscope', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:6, nullable:false }, formatter: '.formatter.formatAuth'}" id="__select4">
+					    <items>
+					        <core:ListItem text="100010" key="100010" additionalText="Public"/>
+					        <core:ListItem text="100020" key="100020" additionalText="Internal"/>
+					        <core:ListItem text="100030" key="100030" additionalText="Confidential"/>
+			           </items>
+					</ComboBox>	
+					
+					<Label text="Priority"/>
+					<ComboBox showSecondaryValues="true" value="{ path: 'IvImp', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:1, nullable:false }, formatter: '.formatter.formatPriority'}" id="__select2">
+					    <items>
+					        <core:ListItem text="1" key="1" additionalText="Very Important"/>
+					        <core:ListItem text="2" key="2" additionalText="Important"/>
+					        <core:ListItem text="3" key="3" additionalText="Low"/>
+					    	
+			           </items>
+					</ComboBox>
+					<!--<Input name="IvImp" id="IvImp_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" visible="true" value="{ path: 'IvImp', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:1, nullable:false } }"/>-->
+					<Label text="Lead Group"/>
+					<ComboBox showSecondaryValues="true" value="{ path: 'IvLead', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:4, nullable:false } }" id="__select1">
+					    <items>
+					        <core:ListItem text="0001" key="0001" additionalText="Top 100"/>
+					        <core:ListItem text="0002" key="0002" additionalText="VIP Customers"/>
+					        <core:ListItem text="0003" key="0003" additionalText="Training"/>
+					    	<core:ListItem text="0004" key="0004" additionalText="Consulting"/>
+					        <core:ListItem text="0005" key="0005" additionalText="Sales"/>
+					        <core:ListItem text="0006" key="0006" additionalText="Critical Customer"/>
+					        <core:ListItem text="0007" key="0007" additionalText="New Customer"/>
+			           </items>
+					</ComboBox> 
+					<!--<Input name="IvLead" id="IvLead_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" visible="true" value="{ path: 'IvLead', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:4, nullable:false } }"/>-->
+					<Label text="Origin"/>
+					<ComboBox showSecondaryValues="true" value="{ path: 'IvSource', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:3, nullable:false } }" id="__select0">
+					    <items>
+					        <core:ListItem text="001" key="001" additionalText="Trade Fair"/>
+					        <core:ListItem text="002" key="002" additionalText="External Partner"/>
+					        <core:ListItem text="003" key="003" additionalText="Campaign"/>
+					        <core:ListItem text="004" key="004" additionalText="Telephone inquiry"/>
+					        <core:ListItem text="005" key="005" additionalText="Roadshow"/>
+					       
+					        </items>
+					</ComboBox> 
+					<!--<Input name="IvSource" id="IvSource_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" visible="true" value="{ path: 'IvSource', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:3, nullable:false } }"/>-->
+					<Label text="Status"/>
+					<ComboBox showSecondaryValues="true" value="{ path: 'IvStatus', type: 'sap.ui.model.odata.type.String', formatter: '.formatter.formatStatus' }" id="__box0">
+					    <items>
+					        <core:ListItem text="E0001" key="E0001" additionalText="Draft"/>
+					        <core:ListItem text="E0002" key="E0002" additionalText="In Revision"/>
+					        <core:ListItem text="E0003" key="E0003" additionalText="Pulished"/>
+					        <core:ListItem text="E0007" key="E0007" additionalText="Obsolete"/>
+					        <core:ListItem text="E0008" key="E0008" additionalText="Canceled"/>
+					    </items>
+					</ComboBox>
+					<Label text="Knowledge Article Description"/>
+					<Input name="IvTKadesc" id="IvTKadesc_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" visible="true" value="{ path: 'IvTKadesc', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:132, nullable:false } }"/>
+					<Label text="Knowledge Article Keyword"/>
+					<Input name="IvTKeyword" id="IvTKeyword_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" visible="true" value="{ path: 'IvTKeyword', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:132, nullable:false } }"/>
+					
+					<Label/>
+					<Title text="Problem Description" id="__title0"/>
+					<Label/>
+					<TextArea name="IvTProb" id="IvTProb_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" visible="true" value="{ path: 'IvTProb', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:132, nullable:false } }"/>
+					<Label/>
+					<Title text="Solution Description" id="__title1"/>
+					<Label/>
+					<TextArea name="IvTSol" id="IvTSol_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" visible="true" value="{ path: 'IvTSol', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:132, nullable:false } }"/>
+					
+				</f:content>
+			</f:SimpleForm>
+		</semantic:content>
+		<semantic:saveAction>
+			<semantic:SaveAction id="save" enabled="{viewModel>/enableCreate}" press="onSave"/>
+		</semantic:saveAction>
+		<semantic:cancelAction>
+			<semantic:CancelAction id="cancel" press="onCancel"/>
+		</semantic:cancelAction>
+	</semantic:DetailPage>
+</mvc:View>
